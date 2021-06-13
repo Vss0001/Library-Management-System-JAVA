@@ -58,7 +58,7 @@ public class AdminLogin extends JFrame {
 			loginLabel.setVerticalAlignment(JLabel.CENTER);
 			loginLabel.setHorizontalAlignment(JLabel.CENTER);
 			loginLabel.setFont(new Font("Monospaced", Font.BOLD,22));
-			loginLabel.setForeground(Color.decode("#ffffff"));
+			loginLabel.setForeground(Color.decode("#829298"));
 		adminPanel.add(loginLabel, BorderLayout.NORTH);
 
 		JPanel loginForm = new JPanel();
@@ -66,7 +66,7 @@ public class AdminLogin extends JFrame {
 		loginForm.setPreferredSize(new Dimension(350,120));
 			JLabel lblEnterName = new JLabel("Admin ID:   ");
 			lblEnterName.setFont(new Font("SansSerif", Font.PLAIN,18));
-			lblEnterName.setForeground(Color.decode("#ffffff"));
+			lblEnterName.setForeground(Color.decode("#829298"));
 			JPanel usernameFormGroup = new JPanel(new BorderLayout(5,5));
 			usernameFormGroup.setOpaque(false);
 			lblEnterName.setPreferredSize(new Dimension(100,20));
@@ -79,7 +79,7 @@ public class AdminLogin extends JFrame {
 
 			JLabel passwordLabel = new JLabel("Password: ");
 			passwordLabel.setFont(new Font("SansSerif", Font.PLAIN,18));
-			passwordLabel.setForeground(Color.decode("#ffffff"));
+			passwordLabel.setForeground(Color.decode("#829298"));
 			JPanel passwordFormGroup = new JPanel(new BorderLayout(5,5));
 			passwordField = new JPasswordField("",10);
 			passwordField.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -123,6 +123,12 @@ public class AdminLogin extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			if(AdminLoginDB.checkConnection()) {
+				System.out.println("Connected to Database Successfully");
+			} else  {
+				JOptionPane.showMessageDialog(AdminLogin.this, "Not Connected to Database Server!");
+				return;
+			}
 			String id=textField.getText();
 			String password=String.valueOf(passwordField.getPassword());
 			if(AdminLoginDB.validate(id, password)) {

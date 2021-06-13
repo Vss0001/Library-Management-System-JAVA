@@ -149,6 +149,12 @@ public class StudentLogin extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(AdminLoginDB.checkConnection()) {
+                    System.out.println("Connected to Database Successfully");
+                } else  {
+                    JOptionPane.showMessageDialog(StudentLogin.this, "Not Connected to Database Server!");
+                    return;
+                }
                 String studentId=studentIdTextField.getText();
                 String password=String.valueOf(passwordField.getPassword());
 //                System.out.println(studentId+" "+password);

@@ -53,13 +53,13 @@ public class Main extends JFrame {
 
 		JLabel lblLibrary = new JLabel("Library");
 		lblLibrary.setFont(new Font("Serif", Font.BOLD, 50));
-		lblLibrary.setForeground(new Color(0, 0, 0));
+		lblLibrary.setForeground(Color.decode("#000"));
 		JLabel lblManagement = new JLabel("Management");
 		lblManagement.setFont(new Font("Serif", Font.BOLD, 50));
-		lblManagement.setForeground(new Color(0, 0, 0));
+		lblManagement.setForeground(Color.decode("#000"));
 		JLabel lblSystem = new JLabel("System");
 		lblSystem.setFont(new Font("Serif", Font.BOLD, 50));
-		lblSystem.setForeground(new Color(0, 0, 0));
+		lblSystem.setForeground(Color.decode("#000"));
 
 //		Buttons
 		JButton btnAdminLogin = new JButton("Admin Login");

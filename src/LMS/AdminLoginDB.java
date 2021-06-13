@@ -7,6 +7,19 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 
 public class AdminLoginDB {
+    public static boolean checkConnection() {
+        boolean status=false;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn=DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/lms","root","");
+            PreparedStatement ps=conn.prepareStatement("select * from admin");
+            ResultSet rs=ps.executeQuery();
+            status=rs.next();
+            conn.close();
+        }catch(Exception e){System.out.println(e);}
+        return status;
+    }
  
     public static boolean validate(String id,String password){
         boolean status=false;
